@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  <title>Computer Graphics Assignment</title>
+</head>
+
+<body>
+
+
+  <a-scene shadow="type: pcfsoft" renderer="physicallyCorrectLights: true; colorManagement: true">
+    <a-assets>
+      <img id="rugTex" src="rug.jpg">
+      <img id="tileTex" src="tile.jpg">
+      <img id="tableTex" src="table.jpg">
+      <img id="chairTex" src="chairs.jpg">
+      <img id="miloTex" src="milo.jpeg">
+      <img id="milkTex" src="milk.png">
+
+
+    </a-assets>
+    <!-- CAMERA -->
+    <a-entity position="0 1.2 2.75" rotation="-5 0 0">
+      <a-camera></a-camera>
+    </a-entity>
+
+    <!-- LIGHTING -->
+    <a-entity light="type: directional; intensity: 2; castShadow: true; color: #fffbe0" position="0 4 3"
+      rotation="-40 180 0">
+    </a-entity>
+    <a-entity light="type: ambient; intensity: 0.35; color: #fff8e6"></a-entity>
+
+
+    <!-- FLOOR -->
+    <a-plane position="0 0 -1" rotation="-90 0 0" width="8" height="6"
+      material="src:#tileTex; repeat: 1 1 roughness: 1; metalness: 0" shadow="receive: true"></a-plane>
+
+    <!-- RUG -->
+    <a-circle position="0 0.01 -1.2" rotation="-90 0 0" radius="1.7"
+      material="src:#rugTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="receive: true">
+    </a-circle>
+
+
+    <!-- TABLE (round top + 3 angled slender legs) -->
+    <a-cylinder position="0 0.65 -1.2" radius="0.45" height="0.08"
+      material="src:#chairTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true; receive: true">
+    </a-cylinder>
+
+    <!-- Table legs -->
+    <a-box position="0.32 0.3 -1.25" width="0.06" height="0.6" depth="0.06" rotation="15 0 18"
+      material="src:#tableTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true">
+    </a-box>
+
+    <a-box position="-0.32 0.3 -1.1" width="0.06" height="0.6" depth="0.06" rotation="15 0 -18"
+      material="src:#tableTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true">
+    </a-box>
+
+    <a-box position="0 0.3 -1.45" width="0.06" height="0.6" depth="0.06" rotation="-10 0 0"
+      material="src:#tableTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true">
+    </a-box>
+
+    <!-- CHAIR LEFT -->
+    <a-entity>
+      <a-box position="-1 0.1 -1.2" width="0.7" height="0.15" depth="0.6"
+        material="src:#tableTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true; receive: true">
+      </a-box>
+
+      <a-box position="-1 0.23 -1.2" width="0.9" height="0.12" depth="0.6"
+        material="src:#chairTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true">
+      </a-box>
+    </a-entity>
+
+
+    <!-- CHAIR RIGHT -->
+    <a-entity>
+      <a-box position="1 0.1 -1.2" width="0.7" height="0.15" depth="0.6"
+        material="src:#tableTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true; receive: true">
+      </a-box>
+
+      <a-box position="1 0.23 -1.2" width="0.9" height="0.12" depth="0.6"
+        material="src:#chairTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true"></a-box>
+    </a-entity>
+
+    <!-- MILO TIN  -->
+    <a-cylinder position="0 0.8 -1.2" height="0.3" radius="0.125"
+      material="src:#miloTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true">
+    </a-cylinder>
+
+    <!-- MILK TIN -->
+    <a-cylinder position="0.28 0.74 -1.05" height="0.1" radius="0.07"
+      material="src:#milkTex; repeat: 1 1 roughness: 0; metalness: 0" shadow="cast: true">
+    </a-cylinder>
+
+    <!-- LEFT MUG -->
+    <a-entity position="-0.28 0.74 -1.27">
+
+      <a-cylinder radius="0.09" height="0.12" material="color: #4b526; roughness: 0.2; metalness: 0" shadow="cast: true"
+        position="0 0 0">
+
+        <a-cylinder radius="0.085" height="0.15" color="#FFFFFF"
+          position="0 -0.005 0" material="side:back">
+        </a-cylinder>
+      </a-cylinder>
+
+      <a-torus radius="0.04" radius-tubular="0.0075" segments-radial="16" segments-tubular="16" rotation="0 0 90"
+        position="-0.14 0 0" material="color: #4b526; roughness: 0.2; metalness: 0" shadow="cast: true"></a-torus>
+    </a-entity>
+
+
+    <!-- RIGHT MUG (brown/beige) -->
+    <a-entity position="0.34 0.74 -1.32">
+
+      <a-cylinder radius="0.09" height="0.12" material="color: #a57a54; roughness:0.2 ; metalness: 0"
+        shadow="cast: true" position="0 0 0">
+
+        <a-cylinder radius="0.085" height="0.15" color="#FFFFFF" position="0 -0.005 0" material="side: back">
+        </a-cylinder>
+      </a-cylinder>
+
+      <a-torus radius="0.04" radius-tubular="0.0075" segments-radial="16" segments-tubular="16" rotation="0 0 90"
+        position="0.14 0 0" material="color: #a57a54; roughness: 0.2; metalness: 0" shadow="cast: true"></a-torus>
+
+  </a-scene>
+
+
+</body>
+
+</html>
